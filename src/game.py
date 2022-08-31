@@ -51,3 +51,17 @@ class Game():
             rect = (move.final.col * SQSIZE, move.final.row * SQSIZE, SQSIZE, SQSIZE)
             # Blit or Draw
             pg.draw.rect(surface, color, rect)
+
+    def show_last_move(self, surface):
+
+        if self.board.last_move:
+            initial = self.board.last_move.initial
+            final = self.board.last_move.final
+
+            for pos in [initial, final]:
+                # color
+                color = 'lightblue' if (pos.row + pos.col) % 2 == 0 else 'steelblue'
+                # rect
+                rect = (pos.col * SQSIZE, pos.row * SQSIZE, SQSIZE, SQSIZE)
+                # blit
+                pg.draw.rect(surface, color, rect)

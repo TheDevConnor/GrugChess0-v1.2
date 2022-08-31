@@ -24,6 +24,9 @@ class Piece():
     def add_moves(self, move):
         self.moves.append(move)
 
+    def clear_moves(self):
+        self.moves = []
+
 class Pawn(Piece):
     def __init__(self, color):
         # The direction of the piece
