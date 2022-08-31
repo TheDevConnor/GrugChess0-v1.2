@@ -10,7 +10,11 @@ class Square():
         return self.piece != None
 
     def is_empty(self):
-        return not self.piece == None
+        # If you write this line of code on 17 like this:
+        # return not self.piece == None()
+        # The code will not run properly.
+        # The reason is because you are not calling the correct method.
+        return not self.has_piece()
 
     def has_team_piece(self, color):
         return self.has_piece() and self.piece.color == color
@@ -26,5 +30,4 @@ class Square():
         for arg in args:
             if arg < 0 or arg > 7:
                 return False
-
         return True

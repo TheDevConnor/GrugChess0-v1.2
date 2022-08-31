@@ -46,7 +46,7 @@ class Game():
            # Loop all valid moves
            for move in piece.moves:
             # Color
-            color = 'red' if (move.final.row + move.final.col) % 2 == 0 else 'blue'
+            color = 'lightcoral' if (move.final.row + move.final.col) % 2 == 0 else 'indianred'
             # Rect
             rect = (move.final.col * SQSIZE, move.final.row * SQSIZE, SQSIZE, SQSIZE)
             # Blit or Draw
