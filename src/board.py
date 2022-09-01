@@ -30,7 +30,7 @@ class Board():
 
         #clear the valid moves
         piece.clear_moves()
-
+        
         # Set the last move
         self.last_move = move
 
