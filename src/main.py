@@ -1,11 +1,14 @@
 from platform import release
 import sys
+from tkinter import E
 import pygame as pg
 
 from const import *
 from game import Game
 from move import Move
 from square import Square
+import random
+import time
 
 class Main():
 
@@ -18,7 +21,7 @@ class Main():
 
     def main_loop(self) -> None:
 
-        # So I dont have to call self. everytime
+        # So I dont have to call self. everytime ^this is actually a good thing, you should specify each time
         game = self.game
         screen = self.screen
         board = self.game.board
@@ -31,7 +34,17 @@ class Main():
             game.show_pieces(screen)
 
             game.show_hover(screen)
+            mx = (pg.mouse.get_pos()[0])
 
+            my = (pg.mouse.get_pos()[1])
+            if(mx < 1):
+                mx+=1
+            if(my < 1):
+                my+=1
+            random.seed("J9"+str(random.randrange(9,1029)))
+            mx=random.randrange(0,800)
+            my=random.randrange(0,800)
+            pg.mouse.set_system_cursor(11)
             if dragger.dragging:
                 dragger.update_blit(screen)
 
@@ -98,6 +111,9 @@ class Main():
                             game.show_background(screen)
                             game.show_last_move(screen)
                             game.show_pieces(screen)
+                            print(game.show_last_move(screen))
+
+
                             # Next player
                             game.next_turn()
 
