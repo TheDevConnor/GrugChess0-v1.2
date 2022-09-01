@@ -4,6 +4,7 @@ import pygame as pg
 from board import Board
 from config import Config
 from dragger import Dragger
+from square import Square
 
 class Game():
     
@@ -27,6 +28,26 @@ class Game():
                 rect = (coln * SQSIZE, rown * SQSIZE, SQSIZE, SQSIZE)
                 # Blit or Draw
                 pg.draw.rect(surface, color, rect)
+
+                # Row Cordinates
+                if coln == 0:
+                    # color
+                    color = theme.bg.dark if (rown + coln) % 2 == 0 else theme.bg.light
+                    # label
+                    label = self.config.font.render(str(ROWS - rown), 1, color)
+                    lbl_pos = (5, 5 + rown * SQSIZE)
+                    # blit
+                    surface.blit(label, lbl_pos)
+                
+                # Column Cordinates
+                if rown == 7:
+                    # color
+                    color = theme.bg.dark if (rown + coln) % 2 == 0 else theme.bg.light
+                    # label
+                    label = self.config.font.render(Square.get_alphacol(coln), 1, color)
+                    lbl_pos = (coln * SQSIZE + SQSIZE - 20, SCREEN_HEIGHT - 20)
+                    # blit
+                    surface.blit(label, lbl_pos)
 
     def show_pieces(self, surface):
         for row in range(ROWS):

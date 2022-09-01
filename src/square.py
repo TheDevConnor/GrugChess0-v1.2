@@ -1,10 +1,13 @@
 
 class Square():
 
+    ALPHACOLS = {0: 'A', 1: 'B', 2: 'C', 3: 'D', 4: 'E', 5: 'F', 6: 'G', 7: 'H'}
+
     def __init__(self, row, col, piece=None):
         self.row = row
         self.col = col
         self.piece = piece
+        self.ALPHACOLS = self.ALPHACOLS[col]
 
     def __eq__(self, other):
         return self.row == other.row and self.col == other.col
@@ -34,3 +37,8 @@ class Square():
             if arg < 0 or arg > 7:
                 return False
         return True
+
+    @staticmethod
+    def get_alphacol(col):
+        ALPHACOLS = {0: 'A', 1: 'B', 2: 'C', 3: 'D', 4: 'E', 5: 'F', 6: 'G', 7: 'H'}
+        return ALPHACOLS[col]
