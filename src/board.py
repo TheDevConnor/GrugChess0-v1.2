@@ -40,6 +40,7 @@ class Board():
 
         # move
         piece.moved = True
+        print(self.square[final.row][final.col].piece)
 
         #clear the valid moves
         piece.clear_moves()

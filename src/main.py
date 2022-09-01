@@ -1,5 +1,6 @@
 from platform import release
 import sys
+from tabnanny import check
 from tkinter import E
 import pygame as pg
 
@@ -103,6 +104,7 @@ class Main():
                         # If move is valid
                         if board.valid_move(dragger.piece, move):
                             capture = board.square[released_row][released_col].has_piece()
+
                             board.move(dragger.piece, move)
                             # Sound effect
                             game.sound_effect(capture)
@@ -111,7 +113,7 @@ class Main():
                             game.show_background(screen)
                             game.show_last_move(screen)
                             game.show_pieces(screen)
-                            print(game.show_last_move(screen))
+                            # print(game.show_last_move(screen))
 
 
                             # Next player
