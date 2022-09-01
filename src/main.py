@@ -89,10 +89,14 @@ class Main():
 
                         # If move is valid
                         if board.valid_move(dragger.piece, move):
+                            capture = board.square[released_row][released_col].has_piece()
                             board.move(dragger.piece, move)
+                            # Sound effect
+                            game.sound_effect(capture)
 
                             # Show methouds
                             game.show_background(screen)
+                            game.show_last_move(screen)
                             game.show_pieces(screen)
                             # Next player
                             game.next_turn()
