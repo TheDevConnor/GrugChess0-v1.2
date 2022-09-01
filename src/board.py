@@ -29,6 +29,13 @@ class Board():
         if isinstance(piece, Pawn):
             self.check_promotion(piece, final)
 
+        # KingSide Castling
+        if isinstance(piece, King):
+            if self.castling(initial, final):
+                diff = final.col - initial.col
+                rook = piece.left_rook if diff < 0 else piece.right_rook
+                self.move(rook, rook.moves[-1])
+
         # move
         piece.moved = True
 
@@ -44,6 +51,9 @@ class Board():
     def check_promotion(self, piece, final):
         if final.row == 0 or final.row == 7:
             self.square[final.row][final.col].piece = Queen(piece.color)
+
+    def castling(self, initial, final):
+        return abs(initial.col - final.col) == 2
 
     def calc_moves(self, piece, row, col):
         # Calculate the valid moves for the piece
@@ -172,6 +182,68 @@ class Board():
                         move = Move(initial, final)
                         # Append new valid move 
                         piece.add_moves(move)
+
+            # Castling
+            if not piece.moved:
+                # Queen Side Castling
+                left_rook = self.square[row][0].piece
+                if isinstance(left_rook, Rook):
+                    if not left_rook.moved:
+                        for c in range(1, 4):
+                            # Casting is not possable because the squares are not empty
+                            if self.square[row][c].has_piece():
+                                break
+
+                            if c == 3:
+                                # Rook Moves
+                                # Adds left rock to the king
+                                piece.left_rook = left_rook
+                                # Create square of the new move
+                                initial = Square(row, 0)
+                                final = Square(row, 3)
+                                # Create the new move
+                                move = Move(initial, final)
+                                # Append new valid move
+                                left_rook.add_moves(move)
+
+                                # King Moves
+                                # Create square of the new move
+                                initial = Square(row, col)
+                                final = Square(row, 2)
+                                # Create the new move
+                                move = Move(initial, final)
+                                # Append new valid move
+                                piece.add_moves(move)
+
+                # King Side Castling
+                right_rook = self.square[row][7].piece  
+                if isinstance(right_rook, Rook):
+                    if not right_rook.moved:
+                        for c in range(5, 7):
+                            # Casting is not possable because the squares are not empty
+                            if self.square[row][c].has_piece():
+                                break
+
+                            if c == 6:
+                                # Rook Moves
+                                # Adds left rock to the king
+                                piece.right_rook = right_rook
+                                # Create square of the new move
+                                initial = Square(row, 7)
+                                final = Square(row, 5)
+                                # Create the new move
+                                move = Move(initial, final)
+                                # Append new valid move
+                                right_rook.add_moves(move)
+
+                                # King Moves
+                                # Create square of the new move
+                                initial = Square(row, col)
+                                final = Square(row, 6)
+                                # Create the new move
+                                move = Move(initial, final)
+                                # Append new valid move
+                                piece.add_moves(move)
 
         if isinstance(piece, Pawn): pawn_moves()
         if isinstance(piece, Knight): knight_moves()

@@ -65,3 +65,7 @@ class King(Piece):
         # super is calling the Piece constructor and calling the
         # __init__ method of the Piece class
         super().__init__(color, m.inf, 'king')
+
+        # Castling
+        left_rock = None
+        right_rock = None
