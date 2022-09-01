@@ -67,5 +67,5 @@ class King(Piece):
         super().__init__(color, m.inf, 'king')
 
         # Castling
-        left_rock = None
-        right_rock = None
+        left_rook = None
+        right_rook = None
