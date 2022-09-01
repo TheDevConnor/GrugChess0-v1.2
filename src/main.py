@@ -107,6 +107,15 @@ class Main():
                 elif event.type == pg.KEYDOWN:
                     if event.key == pg.K_t:
                         game.change_theme()
+
+                    if event.key == pg.K_r:
+                        game.reset()
+                        game = self.game
+                        board = self.game.board
+                        dragger = self.game.dragger
+
+                    if event.key == pg.K_q:
+                        sys.exit()
                 
                 # Quit the apllication
                 if event.type == pg.QUIT:

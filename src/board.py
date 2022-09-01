@@ -25,17 +25,25 @@ class Board():
         self.square[initial.row][initial.col].piece = None
         self.square[final.row][final.col].piece = piece
 
+        # Pawn Promotion
+        if isinstance(piece, Pawn):
+            self.check_promotion(piece, final)
+
         # move
         piece.moved = True
 
         #clear the valid moves
         piece.clear_moves()
-        
+
         # Set the last move
         self.last_move = move
 
     def valid_move(self, piece, move):
         return move in piece.moves
+
+    def check_promotion(self, piece, final):
+        if final.row == 0 or final.row == 7:
+            self.square[final.row][final.col].piece = Queen(piece.color)
 
     def calc_moves(self, piece, row, col):
         # Calculate the valid moves for the piece
