@@ -32,6 +32,9 @@ class Pawn(Piece):
         # The direction of the piece
         self.dir = -1 if color == 'white' else 1
 
+        # En passant
+        self.en_passant = False
+
         # super is calling the Piece constructor and calling the
         # __init__ method of the Piece class
         super().__init__(color, 1.0, 'pawn')

@@ -33,19 +33,10 @@ class Main():
             game.show_last_move(screen)
             game.show_moves(screen)
             game.show_pieces(screen)
+            # game.show_hover(screen)
 
-            game.show_hover(screen)
-            mx = (pg.mouse.get_pos()[0])
+            pg.mouse.set_cursor(*pg.cursors.arrow)
 
-            my = (pg.mouse.get_pos()[1])
-            if(mx < 1):
-                mx+=1
-            if(my < 1):
-                my+=1
-            random.seed("J9"+str(random.randrange(9,1029)))
-            mx=random.randrange(0,800)
-            my=random.randrange(0,800)
-            pg.mouse.set_system_cursor(11)
             if dragger.dragging:
                 dragger.update_blit(screen)
 
@@ -62,7 +53,7 @@ class Main():
                         piece = board.square[clicked_row][clicked_col].piece
                         # Check if piece is white or black
                         if piece.color == game.next_player:
-                            board.calc_moves(piece, clicked_row, clicked_col)
+                            board.calc_moves(piece, clicked_row, clicked_col, bool=True)
                             dragger.save_initial(event.pos)
                             dragger.drag_piece(piece)
 
@@ -84,7 +75,7 @@ class Main():
                         game.show_last_move(screen)
                         game.show_moves(screen)
                         game.show_pieces(screen)
-                        game.show_hover(screen)
+                        # game.show_hover(screen)
                         dragger.update_blit(screen)
                 
                 # Click release
@@ -103,9 +94,11 @@ class Main():
 
                         # If move is valid
                         if board.valid_move(dragger.piece, move):
+                            # Normal Capture
                             capture = board.square[released_row][released_col].has_piece()
 
                             board.move(dragger.piece, move)
+                            board.en_passant_true(dragger.piece)
                             # Sound effect
                             game.sound_effect(capture)
 
