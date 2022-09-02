@@ -7,4 +7,14 @@ For the AI i will be looking into tenserflow and a neral network.
 
 For the chess game you have the basic functions like checks, en-passant, and castling. Here are some exampls of them!
 
+Light Mode
 ![](src/images/github%20images/Screenshot%202022-09-02%20125816.png)
+
+Dark Mode
+![](src/images/github%20images/Screenshot%202022-09-02%20125902.png)
+
+Chess.com Theme
+![](src/images/github%20images/Screenshot%202022-09-02%20125842.png)
+
+Default Mode
+![](src/images/github%20images/Screenshot%202022-09-02%20125927.png)
