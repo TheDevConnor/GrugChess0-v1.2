@@ -9,7 +9,7 @@ For the chess game you have the basic functions like checks, en-passant, and cas
 
 Light Mode
 
-![](src/images/github%20images/Screenshot%202022-09-02%20125816.png)
+![](src/images/github%20images/Screenshot%202022-09-02%20125816.png) ![](src/images/github%20images/Screenshot%202022-09-02%20125902.png)
 
 Dark Mode
 
