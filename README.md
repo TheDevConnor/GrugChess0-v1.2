@@ -1,4 +1,4 @@
-# GrugChess0-v1.2
+# GrugChess0-v1.2 ![](src/images/logo/logo.png
 A python Chess Engine!
 This is my secound attemped at a chess engine. The first one that I made was not the best and had a lot of bugs.
 So if you guys find any bugs please report them to me so i can try and fix them!
