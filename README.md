@@ -21,6 +21,6 @@ Chess.com Theme
 
 Default Mode
 
-![](src/images/github%20images/Screenshot%202022-09-02%20125927.png)
+![](src/images/github%20images/Screenshot%202022-09-02%20125917.png)
 
 
